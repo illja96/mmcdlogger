@@ -8,19 +8,19 @@ How to make your own datalogging cable...
 
 ALDL diagnostic connector:
 
-![ALDL diagnostic connector](https://github.com/illja96/mmcdlogger/blob/main/Dmitry%20Yurtaev/diag-conn.jpg)
+![ALDL diagnostic connector](https://github.com/illja96/mmcdlogger/blob/main/diag-conn.jpg)
 
 When pin (10) is shorted to ground (12) ECU enters diagnostic mode.
 In this mode pin (1) is used to exchange diagnostic data with a scan tool. Serial communication is done using 1953 baud, 8 bit, 1 stop bit, no parity, TTL(?) levels.
 I used the following RS-232 adapter (taken from [Club DSM Colorado](http://co.dsm.org/tech/1G_dl_sch.html)):
 
-![RS-232 adapter 1 schematics](https://github.com/illja96/mmcdlogger/blob/main/Dmitry%20Yurtaev/ecu-rs232.jpg)
+![RS-232 adapter 1 schematics](https://github.com/illja96/mmcdlogger/blob/main/ecu-rs232.jpg)
 
 I replaced MAX233 with ST232BD, added required external capacitors and power indication LED:
 
-![RS-232 adapter 2 schematics](https://github.com/illja96/mmcdlogger/blob/main/Dmitry%20Yurtaev/schematics.gif)
-![RS-232 adapter 2 PCB top](https://github.com/illja96/mmcdlogger/blob/main/Dmitry%20Yurtaev/pcb-top.jpg)
-![RS-232 adapter 2 PCB bottom](https://github.com/illja96/mmcdlogger/blob/main/Dmitry%20Yurtaev/pcb-bottom.jpg)
+![RS-232 adapter 2 schematics](https://github.com/illja96/mmcdlogger/blob/main/schematics.gif)
+![RS-232 adapter 2 PCB top](https://github.com/illja96/mmcdlogger/blob/main/pcb-top.jpg)
+![RS-232 adapter 2 PCB bottom](https://github.com/illja96/mmcdlogger/blob/main/pcb-bottom.jpg)
 
 # About the Protocol
 The protocol is simple: request-reply. Request and reply are one-byte message.
@@ -102,7 +102,7 @@ There're two kinds: active and stored (accumulated).
 |16|36|Ignition circuit||
 
 # Palm Support
-![MMCd](https://github.com/illja96/mmcdlogger/blob/main/Dmitry%20Yurtaev/mmcd.jpg)
+![MMCd](https://github.com/illja96/mmcdlogger/blob/main/mmcd.jpg)
 
 Software is distributed under [GNU GPL](http://www.gnu.org/copyleft/gpl.html). It requires PalmOS 3.5 or higher.
 List of supported devices:
@@ -197,61 +197,61 @@ You can continously monitor, graph and record a log of up to 32 parameters (sens
 
 Main form:
 
-![Main](https://github.com/illja96/mmcdlogger/blob/main/Dmitry%20Yurtaev/Main.gif)
+![Main](https://github.com/illja96/mmcdlogger/blob/main/Main.gif)
 
 Tap "New" to start a new log or tap a log name to open an existing one.
 You'll see the log form:
 
-![Review](https://github.com/illja96/mmcdlogger/blob/main/Dmitry%20Yurtaev/Review.gif)
+![Review](https://github.com/illja96/mmcdlogger/blob/main/Review.gif)
 
 Available parameters (sensors) are divided into four banks of up to eight sensors each. Ar the right top corner is sensor bank selector (1, 2, 3, 4). Below are contents of current bank. Each sensor displayed as sensor name and sensor value.
 Tapping at value (the right part) toggles a graph for that sensor. Tapping at sensor name (the left part) toggles sensor capture (more on that later). At the bottom right is mode selector (Review, Monitor). In Review mode recorded log is displayed inside a graph window.
 In the middle is a graph window. It can be scrolled using a scrollbar at the bottom or by tapping inside and dragging the cursor. Above graph window is the time when current sample was captured.
 Monitor mode looks like this:
 
-![Monitor](https://github.com/illja96/mmcdlogger/blob/main/Dmitry%20Yurtaev/Monitor.gif)
-![Monitor numeric](https://github.com/illja96/mmcdlogger/blob/main/Dmitry%20Yurtaev/Monitor-numeric.gif)
+![Monitor](https://github.com/illja96/mmcdlogger/blob/main/Monitor.gif)
+![Monitor numeric](https://github.com/illja96/mmcdlogger/blob/main/Monitor-numeric.gif)
  
 Graph checkbox toggles between graph and numeric mode.
 Unchecking "Pause" starts communicaion with the ECU. Selected sensors (ones that have their name highlighted) are polled and graphed.
 Checking "Log" turns on log writing. Then it can be reviewed later. At the left bottom there's an indication of sample rate and the sensor being polled. Sample rates dropes when more sensors are enabled.
 Test mode:
 
-![Test](https://github.com/illja96/mmcdlogger/blob/main/Dmitry%20Yurtaev/Test.gif)
+![Test](https://github.com/illja96/mmcdlogger/blob/main/Test.gif)
 
 Test mode allows read/erase fault codes, activate relays/solenoids and disable injectors. When faults are displayed you can tap code to read what it means.
 
-![Prefs](https://github.com/illja96/mmcdlogger/blob/main/Dmitry%20Yurtaev/Prefs.gif)
-![VSPD](https://github.com/illja96/mmcdlogger/blob/main/Dmitry%20Yurtaev/VSPD.gif)
+![Prefs](https://github.com/illja96/mmcdlogger/blob/main/Prefs.gif)
+![VSPD](https://github.com/illja96/mmcdlogger/blob/main/VSPD.gif)
  
 Preferences dialog lets you define 8 custom ECU locations to log, if you know what they mean. Also there's serial communication speed and measurment system for temperature values (Metric, English and no conversion Numeric).
 
-![Alarms](https://github.com/illja96/mmcdlogger/blob/main/Dmitry%20Yurtaev/Alarms.gif)
+![Alarms](https://github.com/illja96/mmcdlogger/blob/main/Alarms.gif)
 
 Version 1.3 adds audible alarms support for monitor mode. Sor each sensor you can define alarm threshold, polarity (greater or less than) and choose one of 4 sound pitches.
 
 # Screenshots
 Engine start:
 
-![Engine start](https://github.com/illja96/mmcdlogger/blob/main/Dmitry%20Yurtaev/start.gif)
+![Engine start](https://github.com/illja96/mmcdlogger/blob/main/start.gif)
 
 Knock:
 
-![Knock](https://github.com/illja96/mmcdlogger/blob/main/Dmitry%20Yurtaev/knock.gif)
+![Knock](https://github.com/illja96/mmcdlogger/blob/main/knock.gif)
 
 Idle on hot engine (ambient temperature is +4C):
 
-![Idle](https://github.com/illja96/mmcdlogger/blob/main/Dmitry%20Yurtaev/idle1.gif)
-![Idle](https://github.com/illja96/mmcdlogger/blob/main/Dmitry%20Yurtaev/idle2.gif)
-![Idle](https://github.com/illja96/mmcdlogger/blob/main/Dmitry%20Yurtaev/idle3.gif)
+![Idle](https://github.com/illja96/mmcdlogger/blob/main/idle1.gif)
+![Idle](https://github.com/illja96/mmcdlogger/blob/main/idle2.gif)
+![Idle](https://github.com/illja96/mmcdlogger/blob/main/idle3.gif)
 
 Oxygen sensor:
 
-![Oxygen sensor](https://github.com/illja96/mmcdlogger/blob/main/Dmitry%20Yurtaev/o2.gif)
+![Oxygen sensor](https://github.com/illja96/mmcdlogger/blob/main/o2.gif)
 
 High-density screen support in v1.4:
 
-![HD screen](https://github.com/illja96/mmcdlogger/blob/main/Dmitry%20Yurtaev/hd.gif)
+![HD screen](https://github.com/illja96/mmcdlogger/blob/main/hd.gif)
 
 # Download
 [Sourceforge Releases](http://sourceforge.net/project/showfiles.php?group_id=114453)
