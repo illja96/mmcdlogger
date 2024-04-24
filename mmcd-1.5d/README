@@ -1,0 +1,176 @@
+MMCd, version 1.5d
+Mitsubishi ALDL (OBDI) datalogger
+
+Copyright (c) 2003, Dmitry Yurtaev <dm1try@umail.ru>
+http://mmcdlogger.sourceforge.net
+
+This is free software; you can redistribute it and/or modify it under the
+terms of the GNU General Public License as published by the Free Software
+Foundation; either version 2, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+for more details.
+
+CHANGELOG
+
+23-07-2004: v1.5d
+- Sourceforge release
+
+01-04-2004:
+- Shawn Poulson has set up a page for MMCd Tools at Sourceforge a while
+  ago. The MMCd Tools are an open-source set of support applications for
+  handling datalogs. It helps to uploads datalogs to PC during HotSync
+  and convert datalogs to CSV or Excel spreadsheets.
+
+04-07-2003: v1.5b
+- Added injector duty cycle calculation
+- Rearranged sensors (sorry) to make room for INJD
+
+04-07-2003: v1.5a
+- Added injector duty cycle calculation
+
+03-07-2003: v1.4c
+- If running on a Handspring device call HsKeyboardEnable(false) before
+  trying to open serial port. Should work on Visors now.
+
+01-07-2003: v1.4b
+- Fixed a bug that caused graph scrolling to hang under Visor emulaton.
+  It is still feels unresponsive, as event cueue is keeped cluttered by
+  penMove events. Wonder if it is a case on real thing.
+
+30-06-2003: v1.4a
+- Splitted Edit form into Edit, Test and Debug.
+- Moved Edit and Debug modes into they own forms accessible from main menu.
+- Added high-density screen support. MMCd won't run on Tungstens though,
+  because of limitations of serial port.
+- Added double-density icons.
+- Fixed a few double-density compatibility isues (cosmetic).
+- Added MVIC button to test form.
+- Minor conversion corrections for O2 and fuel trims.
+- Replaced custom scrollbar with the stock one in Edit form.
+- Splitted mmcd.c to test.c and debug.c.
+- Moved resource ids definitions from mmcd.h to resource.h.
+- Updated help for Preferences dialog.
+- Updated Makefile.
+
+20-06-2003: v1.3d
+- Another bug in main form: now I was fooled by MemPtrResize. If there
+  was more than 16 logs application crashed. Fixed.
+- Added 'Backup' attribute indication to main form (dot in the end of
+  log name).
+- Added 'Backup on HotSync' checkbox to 'Rename Log' dialog.
+- Permanently turned on Debug mode.
+
+20-06-2003: v1.3c
+- BUG: Main form code was broken, as it didn't take scrolling into
+  account when opening existing log. as a result, it was possible
+  to open only 11 first logs. Fixed.
+- Turned out, that StrCompare() is using some non-obvious method of
+  string compare and there's no plain strcmp() equivalent prior to
+  PalmOS 4.0. Rewritten compare() in C.
+- Inverted 'S' (P/S load present) bit in f_FLG2().
+- Increased precision of conversion for FTxx, O2 voltage.
+- In test mode renamed Faults to DTCs (for Diagnostic Trouble Codes).
+
+17-06-2003: v1.3b
+- Fixed a small bug with 'Hide' in Review mode: when log contains sample
+  for custom sensor and this sensor is disabled in prefs, HideUnused()
+  shown it anyway leaving a hole in bank.
+- Updated air intake and coolant temperature conversion routines. Now with
+  ones found in DSMlink source.
+- Added O2-F sensor at 0x3e, renamed O2 to O2-R, deleted AIRV.
+- Rearranged sensors.
+- Some code cleanup.
+
+16-06-2003: v1.3a
+- Added 'Graph' checkbox to Monitor mode. When unchecked, graph is replaced
+  by large numeric display of selected sensor. Button panel becomes
+  single-selection.
+- Added 'Alarms' menu. Allows to define alarm threshold and sound for
+  each sensor.
+- 'Graph' checkbox is controlled by hardware button 2
+- In Monitor/numeric mode hardware button 1 cycles selection thru 
+  sensors set for capture.
+- In Review mode hardbuttons 1 and 2 move cursor left/right.
+- PageUp/PageDown hardware buttons change current bank.
+- Hardware button are blocked 1..4 in Edit form whenever unused.
+- State of 'H' button, numeric mode and selection is saved on exit.
+- Added PalmOS version check (>= 3.5) at startup.
+- Removed 'Compatible graphcis' from prefs as it appears unuseful.
+- Added 'Alarms' checkbox to prefs.
+- Fixed a bug in barometric pressure conversion routine.
+
+11-06-2003: v1.2
+- Fixed (I hope) timing advance conversion.
+- Added English-mode pressure conversion (in psi).
+- in Monitor mode 'Log' and 'Pause' checkboxen can be activated by hardware
+  buttons 3 and 4
+
+06-06-2003: v1.1
+- Applied patches submitted by Shawn Pulson <spoulson@rcn.com>
+- Reduced timeout in EvtGetEvent() as 1 second timeout breaks graph
+  scrolling code.
+- Replaced lookup table by XPOSE() macro
+- Moved bank selection buttons 1 pixel left off 'H' to make 1-pixel
+  gap between borders as it looks more pleasant to me :)
+- Bumped version to 1.1
+
+03-06-2003: v1.0d-shawn-2.1
+- Update user interface
+- Update display of sensors in Hide Unused mode, so that they are
+  displayed correctly in column orientation.  As put by Dmitry:
+  1 -     1 -   and not... 1 -     1 -
+  - -     2 -              - -     2 -
+  2 4     3 -              2 4     4 -
+  3 -     4 -              3 -     3 -
+- Update optimization wait in main loop by instead using the commented
+  code block for EvtGetEvent(...).  This is cleaner and doesn't slow
+  down the GUI by sleeping.
+
+01-06-2003: v1.0d-shawn-2.0
+- Update user interface
+- Instead of 5th 'X' bank, use 'H' pushbutton in upper right to
+  toggle "Hide Unused" mode.
+- In Review mode, it will dynamically show only sensors logged at
+  the selected graph point.
+- In Monitor mode, it will show only sensors captured or graphed.
+
+30-05-2003: v1.0d-shawn-1.0
+- Update user inteface
+- Add a 5th 'X' bank that, when selected, will show up to 8 sensors
+  captured or graphed.
+- Add optimization wait in the main loop to keep cpu utilization low.
+
+23-04-2003: v1.0d
+- Added "Compatible graphics" checkbox to prefs dialog. Looks like
+  direct access to bitmap bits doesn't work on Sony CLIE...
+
+16-04-2003: v1.0c
+- Fixed a bug with prefs. When running for the first time default
+  preferences get trashed. Added "Default" button to prefs dialog.
+  (thanks to Steven_GT)
+- Removed call to BmpGetBitsDepth unavalable prior to PalmOS 4.
+  (thanks to Jeff Oberholtzer)
+- try to open serPortCradlePort if serPortCradleRS232Port fails.
+
+31-03-2003: v1.0b
+- Implemented baud rate and measure system in prefs dialog
+- Fixed Purge command in Test form. Pressure, EGR and Boost need testing.
+
+28-03-2003: 
+- Added scrollbar to main form (it still needs some work, though)
+- Implemented test mode. Injectors, Fuel pump, Fault erase should work
+  as expected. Fault codes are not checked throughly - some assistance
+  needed. Others may work, may not, may be permutated
+- Removed Debug mode
+- Added prefs dialog
+
+27-01-2003: v1.0a
+- Main form doesn't scroll, so up to 11 logs can be selected
+- Test mode not implemented yet and contains debugging stuff
+- Settings dialog not implemented
+
+
+$Id: README,v 1.2 2004/07/23 19:27:25 yurtaev Exp $
